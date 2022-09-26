@@ -1,19 +1,4 @@
 {
-  "tasks": [
-    {
-      "title": "go to school",
-      "date": "sunday",
-      "id": 1
-    }
-  ],
-  "userInfo": [
-    {
-      "firstName": "Mahdi",
-      "lastName": "Hasanzadeh",
-      "email": "mahdi.h2619@gmail.com",
-      "country": "afghanistan",
-      "password": "mahdi",
-      "id": 1
-    }
-  ]
+  "tasks": [],
+  "userInfo": []
 }
