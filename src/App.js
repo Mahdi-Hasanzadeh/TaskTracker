@@ -238,7 +238,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navbar />}>
+        <Route path="TaskTracker/" element={<Navbar />}>
           <Route
             index
             element={
