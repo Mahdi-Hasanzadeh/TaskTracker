@@ -6,7 +6,7 @@ import Task from "./PComponent/Task.js";
 import EmptyTask from "./PComponent/EmptyTask.js";
 import Dashboard from "./PComponent/Dashboard.js";
 import Login from "./PComponent/Login.js";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, HashRouter, Routes, Route } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -236,9 +236,9 @@ export default function App() {
     }
   };
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
-        <Route path="TaskTracker/" element={<Navbar />}>
+        <Route path="/" element={<Navbar />}>
           <Route
             index
             element={
@@ -283,6 +283,6 @@ export default function App() {
           />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
