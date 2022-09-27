@@ -1,5 +1,5 @@
 {
-  "homepage": "https://Mahdi-Hasanzadeh.github.io/TaskTracker",
+  "homepage": "https://Mahdi-Hasanzadeh.github.io/TTR",
   "name": "tasktracker",
   "version": "0.1.0",
   "private": true,
@@ -18,8 +18,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -27,17 +27,10 @@
     "server": "json-server --watch db.json --port 5000"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": ["react-app", "react-app/jest"]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
