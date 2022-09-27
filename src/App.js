@@ -6,15 +6,17 @@ import Task from "./PComponent/Task.js";
 import EmptyTask from "./PComponent/EmptyTask.js";
 import Dashboard from "./PComponent/Dashboard.js";
 import Login from "./PComponent/Login.js";
+import About from "./PComponent/About.js";
 import ProtectedRoute from "./PComponent/ProtectedRoute.js";
 import { HashRouter, Routes, Route } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 
 import "./PappCss.css";
 
 export default function App() {
+  const [count, setCount] = React.useState(0);
   const [userInfo, setUserInfo] = React.useState({
     firstName: "",
     lastName: "",
@@ -22,6 +24,7 @@ export default function App() {
     country: "",
     password: ""
   });
+
   const [userName, setUserName] = React.useState({
     firstName: "",
     lastName: "",
@@ -38,7 +41,6 @@ export default function App() {
     date: ""
   });
   const URL = "http://localhost:5000/tasks";
-
   const fetchUserName = async () => {
     try {
       const res = await fetch("http://localhost:5000/userInfo");
@@ -54,25 +56,34 @@ export default function App() {
           };
         });
         setIsLogin(true);
-        toast.success(
-          `Welcome back Mr.${answer[0].firstName} ${answer[0].lastName}`,
-          {
-            autoClose: 6000,
-            position: toast.POSITION.TOP_CENTER
-          }
-        );
+        if (count === 0) {
+          toast.success(
+            `Welcome back Mr.${answer[0].firstName} ${answer[0].lastName}`,
+            {
+              autoClose: 6000,
+              position: toast.POSITION.TOP_CENTER
+            }
+          );
+        } else {
+          toast.success("Your Account Info Has been updated");
+        }
       }
     } catch (error) {}
   };
 
+  const handleCount = () => {
+    setCount(prevData => prevData + 1);
+  };
   React.useEffect(
     () => {
-      console.log("fetched");
+      //console.log("fetched");
       fetchUserName();
       fetchData();
     },
-    [] //data.length use it in dependency array
+    [count] //data.length use it in dependency array
   );
+
+  //console.table(userInfo);
 
   const handleUserInfo = event => {
     const { name, value } = event.target;
@@ -84,16 +95,36 @@ export default function App() {
     });
   };
 
-  const handleSubmitUserInfo = async () => {
-    toast.success("Your Account has benn created successfully");
-    await fetch("http://localhost:5000/userInfo", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json"
-      },
-      body: JSON.stringify(userInfo)
-    });
-    setIsLogin(true);
+  const handleSubmitUserInfo = async (id = 0) => {
+    if (id === 0) {
+      toast.success("Your Account has been created successfully");
+      await fetch("http://localhost:5000/userInfo", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(userInfo)
+      });
+      setIsLogin(true);
+    } else {
+      toast.success("Your Account Info has been updated", {
+        autoClose: 4000
+      });
+      setTimeout(() => {
+        toast.success("redirecting.....", { autoClose: 4000 });
+      }, 4300);
+
+      await fetch("http://localhost:5000/userInfo/1", {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(id)
+      });
+      setTimeout(() => {
+        window.location.reload();
+      }, 8500);
+    }
   };
 
   const handleFormDataChange = event => {
@@ -244,7 +275,6 @@ export default function App() {
             index
             element={
               <React.Fragment>
-                <ToastContainer />
                 <Header
                   isLogin={isLogin}
                   setShowForm={setShowForm}
@@ -269,12 +299,20 @@ export default function App() {
               </React.Fragment>
             }
           />
+          <Route path="About" element={<About />} />
           <Route path="Dashboard" element={<Dashboard data={data} />} />
 
           <Route
             path="Login"
             element={
-              <ProtectedRoute userName={userName} isLogin={isLogin}>
+              <ProtectedRoute
+                fetchUserName={fetchUserName}
+                handleCount={handleCount}
+                userInfo={userInfo}
+                handleSubmitUserInfo={handleSubmitUserInfo}
+                userName={userName}
+                isLogin={isLogin}
+              >
                 <Login
                   handleSubmitUserInfo={handleSubmitUserInfo}
                   userInfo={userInfo}

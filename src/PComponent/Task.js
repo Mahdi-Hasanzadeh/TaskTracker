@@ -1,6 +1,7 @@
 import React from "react";
 import { FaTimes, FaEdit } from "react-icons/fa";
 export default function Task(props) {
+  console.log("task");
   return (
     <div className="task">
       <h2 className="taskTitle">

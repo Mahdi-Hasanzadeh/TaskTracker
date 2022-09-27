@@ -1,4 +1,5 @@
 export default function EmptyTask() {
+  
   return (
     <div className="emptyTask">
       <h2>There is no task</h2>

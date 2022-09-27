@@ -1,9 +1,16 @@
 import React from "react";
+import { toast, ToastContainer } from "react-toastify";
 import { Outlet, Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <React.Fragment>
+      <ToastContainer
+        closeOnClick
+        pauseOnHover={false}
+        autoClose={4000}
+        limit={2}
+      />
       <div className="navbarContainer">
         <div className="navbar">
           <div className="navbarBrand">
@@ -27,7 +34,7 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link className="navItems" to="/">
+                <Link className="navItems" to="/About">
                   About
                 </Link>
               </li>

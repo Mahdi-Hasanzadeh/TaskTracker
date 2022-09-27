@@ -1,8 +1,11 @@
+import React from "react";
+
 import { toast } from "react-toastify";
 //import { useNavigate } from "react-router-dom";
 export default function Header(props) {
   //const navigate = useNavigate();
   //console.log(props.isLogin);
+  
   const styles = {
     backgroundColor: props.showForm ? "red" : "green"
   };
@@ -25,17 +28,23 @@ export default function Header(props) {
     }
   };
   return (
-    <div className="headerContainer">
-      <div id="id" className="header">
-        <div>
-          <h4 className="headerTitle">Save your time by Saving your task</h4>
-        </div>
-        <div>
-          <button style={styles} onClick={HandleShowForm} className="headerBtn">
-            {props.showForm ? "Close Form" : "Show Form"}
-          </button>
+    <React.Fragment>
+      <div className="headerContainer">
+        <div id="id" className="header">
+          <div>
+            <h4 className="headerTitle">Save your time by Saving your task</h4>
+          </div>
+          <div>
+            <button
+              style={styles}
+              onClick={HandleShowForm}
+              className="headerBtn"
+            >
+              {props.showForm ? "Close Form" : "Show Form"}
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 }

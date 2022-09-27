@@ -1,6 +1,7 @@
 import React from "react";
 import { toast } from "react-toastify";
 export default function Form(props) {
+  
   const handleSubmit = event => {
     event.preventDefault();
     if (props.isUpdate) {
