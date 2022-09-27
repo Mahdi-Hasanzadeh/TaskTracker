@@ -1,13 +1,4 @@
 {
   "tasks": [],
-  "userInfo": [
-    {
-      "firstName": "Mahdi",
-      "lastName": "Hasanzadeh",
-      "email": "mahdi786trygame@gmail.com",
-      "country": "asdf",
-      "password": "fdsgggggggggggggg",
-      "id": 1
-    }
-  ]
+  "userInfo": []
 }
