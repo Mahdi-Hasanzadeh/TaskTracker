@@ -6,7 +6,8 @@ import Task from "./PComponent/Task.js";
 import EmptyTask from "./PComponent/EmptyTask.js";
 import Dashboard from "./PComponent/Dashboard.js";
 import Login from "./PComponent/Login.js";
-import { BrowserRouter, HashRouter, Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./PComponent/ProtectedRoute.js";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -151,7 +152,7 @@ export default function App() {
           body: JSON.stringify(formData)
         });
         const answer = await response.json();
-        toast.success("Your Task has benn updated", { autoClose: 2500 });
+        toast.success("Your Task has been updated", { autoClose: 2500 });
         let arr = [];
         setTimeout(() => {
           setData(prevData => {
@@ -269,16 +270,17 @@ export default function App() {
             }
           />
           <Route path="Dashboard" element={<Dashboard data={data} />} />
+
           <Route
             path="Login"
             element={
-              <Login
-                userName={userName}
-                isLogin={isLogin}
-                handleSubmitUserInfo={handleSubmitUserInfo}
-                userInfo={userInfo}
-                handleUserInfo={handleUserInfo}
-              />
+              <ProtectedRoute userName={userName} isLogin={isLogin}>
+                <Login
+                  handleSubmitUserInfo={handleSubmitUserInfo}
+                  userInfo={userInfo}
+                  handleUserInfo={handleUserInfo}
+                />
+              </ProtectedRoute>
             }
           />
         </Route>
