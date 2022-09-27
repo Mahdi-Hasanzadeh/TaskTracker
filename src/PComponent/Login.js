@@ -50,7 +50,7 @@ export default function Login(props) {
       }
     }
   };
-
+  console.table(props.userInfo);
   return (
     <div className="loginForm">
       <form method="POST" onSubmit={handleSubmit}>

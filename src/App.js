@@ -305,7 +305,12 @@ export default function App() {
           <Route
             path="Login"
             element={
-              <ProtectedRoute
+              <Login
+                handleSubmitUserInfo={handleSubmitUserInfo}
+                userInfo={userInfo}
+                handleUserInfo={handleUserInfo}
+              />
+              /* <ProtectedRoute
                 fetchUserName={fetchUserName}
                 handleCount={handleCount}
                 userInfo={userInfo}
@@ -313,12 +318,8 @@ export default function App() {
                 userName={userName}
                 isLogin={isLogin}
               >
-                <Login
-                  handleSubmitUserInfo={handleSubmitUserInfo}
-                  userInfo={userInfo}
-                  handleUserInfo={handleUserInfo}
-                />
-              </ProtectedRoute>
+                
+              </ProtectedRoute> */
             }
           />
         </Route>
