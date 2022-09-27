@@ -33,24 +33,24 @@ export default function Login(props) {
         navigate("/");
       }, 10);
       props.handleSubmitUserInfo();
-    } else {
-      if (char.firstName < 3) {
-        toast.error("First Name too short, minimum-lenght:3 characters");
-      }
-      if (char.lastName < 4) {
-        toast.error("Last Name too short, minimum-lenght:4 characters");
-      }
-      if (char.email < 16) {
-        toast.error(
-          "email is too short, minimum-length:15 characters including (@gmail.com)"
-        );
-      }
-      if (char.password < 7) {
-        toast.error("Weak Password, minimum-lenght:8 characters");
-      }
-    }
+    // } else {
+    //   if (char.firstName < 3) {
+    //     toast.error("First Name too short, minimum-lenght:3 characters");
+    //   }
+    //   if (char.lastName < 4) {
+    //     toast.error("Last Name too short, minimum-lenght:4 characters");
+    //   }
+    //   if (char.email < 16) {
+    //     toast.error(
+    //       "email is too short, minimum-length:15 characters including (@gmail.com)"
+    //     );
+    //   }
+    //   if (char.password < 7) {
+    //     toast.error("Weak Password, minimum-lenght:8 characters");
+    //   }
+     }
   };
-  console.table(props.userInfo);
+  // console.table(props.userInfo);
   return (
     <div className="loginForm">
       <form method="POST" onSubmit={handleSubmit}>

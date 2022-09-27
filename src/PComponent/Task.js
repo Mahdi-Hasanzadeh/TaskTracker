@@ -1,7 +1,8 @@
 import React from "react";
 import { FaTimes, FaEdit } from "react-icons/fa";
+
 export default function Task(props) {
-  console.log("task");
+  //const location = useLocation();
   return (
     <div className="task">
       <h2 className="taskTitle">
@@ -14,14 +15,13 @@ export default function Task(props) {
             }}
             className="faTimes"
           />
-          <a href="#id">
-            <FaEdit
-              className="faEdit"
-              onClick={() => {
-                props.handleUpdate(props.task.id);
-              }}
-            />
-          </a>
+
+          <FaEdit
+            className="faEdit"
+            onClick={() => {
+              props.handleUpdate(props.task.id);
+            }}
+          />
         </span>
       </h2>
       <h3>

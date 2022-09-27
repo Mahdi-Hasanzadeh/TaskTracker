@@ -1,4 +1,5 @@
 import React from "react";
+
 import Navbar from "./PComponent/Navbar.js";
 import Header from "./PComponent/Header.js";
 import Form from "./PComponent/Form.js";
@@ -97,7 +98,12 @@ export default function App() {
 
   const handleSubmitUserInfo = async (id = 0) => {
     if (id === 0) {
-      toast.success("Your Account has been created successfully");
+      toast.success("Your Account has been created successfully", {
+        autoClose: 3500
+      });
+      setTimeout(() => {
+        toast.success("redirecting.....", { autoClose: 4000 });
+      }, 2000);
       await fetch("http://localhost:5000/userInfo", {
         method: "POST",
         headers: {
@@ -105,6 +111,9 @@ export default function App() {
         },
         body: JSON.stringify(userInfo)
       });
+      setTimeout(() => {
+        window.location.reload();
+      }, 6000);
       setIsLogin(true);
     } else {
       toast.success("Your Account Info has been updated", {
@@ -139,6 +148,7 @@ export default function App() {
   const handleUpdate = async id => {
     setShowForm(true);
     setIsUpdate(true);
+    window.scrollTo(50, 50);
     try {
       const response = await fetch(`http://localhost:5000/tasks/${id}`);
       const answer = await response.json();
